@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+  </head>
+  <body>
+    <p>Rock Paper Scissors</p>
+    <br />
+    <button
+      onclick="
+      userMove = 'Rock';
+      computerMove = calculateComputerMove();
+      result = compareMoves();
+      displayResult();
+      "
+    >
+      Rock
+    </button>
+    <button
+      onclick="
+      userMove = 'Paper';
+      computerMove = calculateComputerMove();
+      result = compareMoves();
+      displayResult();
+    "
+    >
+      Paper
+    </button>
+    <button
+      onclick="
+      userMove = 'Scissors';
+      computerMove = calculateComputerMove();
+      result = compareMoves();
+      displayResult();
+    "
+    >
+      Scissors
+    </button>
+    <script>
+      let userMove = "";
+      let result = "";
+      let computerMove = "";
+      const winMessage = "You win  :)";
+      const loseMessage = "You lose  :(";
+      const tieMessage = "It's a tie  :/";
+
+      function calculateComputerMove() {
+        let computerMove = "";
+        randomNumber = Math.random();
+        if (randomNumber > 1 / 3 && randomNumber < 2 / 3)
+          computerMove = "Paper";
+        else if (randomNumber < 1 / 3) computerMove = "Rock";
+        else computerMove = "Scissors";
+        return computerMove;
+      }
+
+      function compareForRock() {
+        if (computerMove === "Rock") result = tieMessage;
+        if (computerMove === "Paper") result = loseMessage;
+        if (computerMove === "Scissors") result = winMessage;
+        return result;
+      }
+
+      function compareForPaper() {
+        if (computerMove === "Rock") result = winMessage;
+        if (computerMove === "Paper") result = tieMessage;
+        if (computerMove === "Scissors") result = loseMessage;
+        return result;
+      }
+
+      function compareForScissors() {
+        if (computerMove === "Rock") result = loseMessage;
+        if (computerMove === "Paper") result = winMessage;
+        if (computerMove === "Scissors") result = tieMessage;
+        return result;
+      }
+
+      function compareMoves() {
+        if (userMove === "Rock") return compareForRock();
+        if (userMove === "Paper") return compareForPaper();
+        if (userMove === "Scissors") return compareForScissors();
+      }
+
+      function displayResult() {
+        alert(
+          `You have picked ${userMove}. \nThe computer has picked ${computerMove}. \n${result}`
+        );
+      }
+    </script>
+  </body>
+</html>
