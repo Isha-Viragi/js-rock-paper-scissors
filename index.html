@@ -7,14 +7,15 @@
   </head>
   <body>
     <p>Rock Paper Scissors</p>
-    <br />
     <button
       onclick="
       userMove = 'Rock';
       computerMove = calculateComputerMove();
       result = compareMoves();
       trackScore(result);
+      displayMoves();
       displayResult();
+      displayScore();
       "
     >
       Rock
@@ -25,7 +26,9 @@
       computerMove = calculateComputerMove();
       result = compareMoves();
       trackScore(result);
+      displayMoves();
       displayResult();
+      displayScore();
       "
     >
       Paper
@@ -36,14 +39,24 @@
       computerMove = calculateComputerMove();
       result = compareMoves();
       trackScore(result);
+      displayMoves();
       displayResult();
+      displayScore();
     "
     >
       Scissors
     </button>
+
+    <p class="js-moves"></p>
+    <p class="js-result"></p>
+    <p class="js-score-tracker"></p>
+
     <button
       onclick="
       resetScore();
+      displayMoves();
+      displayResult();
+      displayScore();
       "
     >
       Reset
@@ -61,6 +74,8 @@
       const winMessage = "You win  :)";
       const loseMessage = "You lose  :(";
       const tieMessage = "It's a tie  :/";
+
+      displayScore();
 
       function calculateComputerMove() {
         let computerMove = "";
@@ -113,11 +128,24 @@
         localStorage.removeItem("scoreTracker");
       }
 
+      function displayMoves() {
+        if (localStorage.getItem("scoreTracker")) {
+          document.querySelector(
+            ".js-moves"
+          ).innerHTML = `You have picked ${userMove}. \nThe computer has picked ${computerMove}.`;
+        } else document.querySelector(".js-moves").innerHTML = "";
+      }
+
       function displayResult() {
-        alert(
-          `You have picked ${userMove}. \nThe computer has picked ${computerMove}. \n${result} 
-          \nWins: ${scoreTracker.wins}\nLoses: ${scoreTracker.loses}\nTies: ${scoreTracker.ties}`
-        );
+        if (localStorage.getItem("scoreTracker")) {
+          document.querySelector(".js-result").innerHTML = result;
+        } else document.querySelector(".js-result").innerHTML = "";
+      }
+
+      function displayScore() {
+        document.querySelector(
+          ".js-score-tracker"
+        ).innerHTML = `Wins: ${scoreTracker.wins}, Loses: ${scoreTracker.loses}, Ties: ${scoreTracker.ties}`;
       }
     </script>
   </body>
