@@ -49,7 +49,7 @@
       Reset
     </button>
     <script>
-      const scoreTracker = {
+      const scoreTracker = JSON.parse(localStorage.getItem("scoreTracker")) || {
         wins: 0,
         loses: 0,
         ties: 0,
@@ -100,15 +100,17 @@
       }
 
       function trackScore(result) {
-        if (result === winMessage) scoreTracker.wins += 1;
-        if (result === loseMessage) scoreTracker.loses += 1;
-        if (result === tieMessage) scoreTracker.ties += 1;
+        if (result === winMessage) scoreTracker.wins++;
+        if (result === loseMessage) scoreTracker.loses++;
+        if (result === tieMessage) scoreTracker.ties++;
+        localStorage.setItem("scoreTracker", JSON.stringify(scoreTracker));
       }
 
       function resetScore() {
         scoreTracker.wins = 0;
         scoreTracker.loses = 0;
         scoreTracker.ties = 0;
+        localStorage.removeItem("scoreTracker");
       }
 
       function displayResult() {
