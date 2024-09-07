@@ -13,6 +13,7 @@
       userMove = 'Rock';
       computerMove = calculateComputerMove();
       result = compareMoves();
+      trackScore(result);
       displayResult();
       "
     >
@@ -23,8 +24,9 @@
       userMove = 'Paper';
       computerMove = calculateComputerMove();
       result = compareMoves();
+      trackScore(result);
       displayResult();
-    "
+      "
     >
       Paper
     </button>
@@ -33,12 +35,26 @@
       userMove = 'Scissors';
       computerMove = calculateComputerMove();
       result = compareMoves();
+      trackScore(result);
       displayResult();
     "
     >
       Scissors
     </button>
+    <button
+      onclick="
+      resetScore();
+      "
+    >
+      Reset
+    </button>
     <script>
+      const scoreTracker = {
+        wins: 0,
+        loses: 0,
+        ties: 0,
+      };
+
       let userMove = "";
       let result = "";
       let computerMove = "";
@@ -83,9 +99,22 @@
         if (userMove === "Scissors") return compareForScissors();
       }
 
+      function trackScore(result) {
+        if (result === winMessage) scoreTracker.wins += 1;
+        if (result === loseMessage) scoreTracker.loses += 1;
+        if (result === tieMessage) scoreTracker.ties += 1;
+      }
+
+      function resetScore() {
+        scoreTracker.wins = 0;
+        scoreTracker.loses = 0;
+        scoreTracker.ties = 0;
+      }
+
       function displayResult() {
         alert(
-          `You have picked ${userMove}. \nThe computer has picked ${computerMove}. \n${result}`
+          `You have picked ${userMove}. \nThe computer has picked ${computerMove}. \n${result} 
+          \nWins: ${scoreTracker.wins}\nLoses: ${scoreTracker.loses}\nTies: ${scoreTracker.ties}`
         );
       }
     </script>
