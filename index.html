@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="styles.css" type="text/css" />
   </head>
   <body>
-    <p>Rock Paper Scissors</p>
+    <p class="title">Rock Paper Scissors</p>
     <button
+      class="move-button"
       onclick="
       userMove = 'Rock';
       computerMove = calculateComputerMove();
@@ -18,9 +19,14 @@
       displayScore();
       "
     >
-      Rock
+      <img
+        src="images/rock-emoji.png"
+        alt="Rock hand emoji"
+        class="move-icon"
+      />
     </button>
     <button
+      class="move-button"
       onclick="
       userMove = 'Paper';
       computerMove = calculateComputerMove();
@@ -31,9 +37,14 @@
       displayScore();
       "
     >
-      Paper
+      <img
+        src="images/paper-emoji.png"
+        alt="Hand paper emoji"
+        class="move-icon"
+      />
     </button>
     <button
+      class="move-button"
       onclick="
       userMove = 'Scissors';
       computerMove = calculateComputerMove();
@@ -44,14 +55,19 @@
       displayScore();
     "
     >
-      Scissors
+      <img
+        src="images/scissors-emoji.png"
+        alt="Scissors hand emoji"
+        class="move-icon"
+      />
     </button>
 
-    <p class="js-moves"></p>
-    <p class="js-result"></p>
-    <p class="js-score-tracker"></p>
+    <p class="js-moves moves"></p>
+    <p class="js-result result"></p>
+    <p class="js-score-tracker score"></p>
 
     <button
+      class="reset-button"
       onclick="
       resetScore();
       displayMoves();
@@ -132,7 +148,8 @@
         if (localStorage.getItem("scoreTracker")) {
           document.querySelector(
             ".js-moves"
-          ).innerHTML = `You have picked ${userMove}. \nThe computer has picked ${computerMove}.`;
+          ).innerHTML = `You <img src="images/${userMove.toLowerCase()}-emoji.png" class="move-icon"> 
+          <img src="images/${computerMove.toLowerCase()}-emoji.png" class="move-icon"> Computer`;
         } else document.querySelector(".js-moves").innerHTML = "";
       }
 
