@@ -6,10 +6,12 @@
     <link rel="stylesheet" href="styles.css" type="text/css" />
   </head>
   <body>
-    <p class="title">Rock Paper Scissors</p>
-    <button
-      class="move-button"
-      onclick="
+    <main class="main-container">
+      <p class="title">Rock Paper Scissors</p>
+      <section>
+        <button
+          class="move-button"
+          onclick="
       userMove = 'Rock';
       computerMove = calculateComputerMove();
       result = compareMoves();
@@ -18,16 +20,16 @@
       displayResult();
       displayScore();
       "
-    >
-      <img
-        src="images/rock-emoji.png"
-        alt="Rock hand emoji"
-        class="move-icon"
-      />
-    </button>
-    <button
-      class="move-button"
-      onclick="
+        >
+          <img
+            src="images/rock-emoji.png"
+            alt="Rock hand emoji"
+            class="move-icon"
+          />
+        </button>
+        <button
+          class="move-button"
+          onclick="
       userMove = 'Paper';
       computerMove = calculateComputerMove();
       result = compareMoves();
@@ -36,16 +38,16 @@
       displayResult();
       displayScore();
       "
-    >
-      <img
-        src="images/paper-emoji.png"
-        alt="Hand paper emoji"
-        class="move-icon"
-      />
-    </button>
-    <button
-      class="move-button"
-      onclick="
+        >
+          <img
+            src="images/paper-emoji.png"
+            alt="Hand paper emoji"
+            class="move-icon"
+          />
+        </button>
+        <button
+          class="move-button"
+          onclick="
       userMove = 'Scissors';
       computerMove = calculateComputerMove();
       result = compareMoves();
@@ -54,29 +56,32 @@
       displayResult();
       displayScore();
     "
-    >
-      <img
-        src="images/scissors-emoji.png"
-        alt="Scissors hand emoji"
-        class="move-icon"
-      />
-    </button>
+        >
+          <img
+            src="images/scissors-emoji.png"
+            alt="Scissors hand emoji"
+            class="move-icon"
+          />
+        </button>
+      </section>
 
-    <p class="js-moves moves"></p>
-    <p class="js-result result"></p>
-    <p class="js-score-tracker score"></p>
+      <p class="js-moves moves"></p>
+      <p class="js-result result"></p>
+      <p class="js-score-tracker score"></p>
 
-    <button
-      class="reset-button"
-      onclick="
+      <button
+        class="reset-button"
+        onclick="
       resetScore();
       displayMoves();
       displayResult();
       displayScore();
       "
-    >
-      Reset
-    </button>
+      >
+        Reset
+      </button>
+    </main>
+
     <script>
       const scoreTracker = JSON.parse(localStorage.getItem("scoreTracker")) || {
         wins: 0,
