@@ -10,6 +10,9 @@ let computerMove = "";
 const winMessage = "You win  :)";
 const loseMessage = "You lose  :(";
 const tieMessage = "It's a tie  :/";
+const isToggled = 'is-toggled';
+const userMoveAutoPlay = '';
+let intervalId;
 
 displayScore();
 
@@ -50,6 +53,15 @@ function compareMoves() {
   if (userMove === "Scissors") return compareForScissors();
 }
 
+function playGame() {
+  computerMove = calculateComputerMove();
+  result = compareMoves();
+  trackScore(result);
+  displayMoves();
+  displayResult();
+  displayScore();
+}
+
 function trackScore(result) {
   if (result === winMessage) scoreTracker.wins++;
   if (result === loseMessage) scoreTracker.loses++;
@@ -83,4 +95,39 @@ function displayScore() {
   document.querySelector(
     ".js-score-tracker"
   ).innerHTML = `Wins: ${scoreTracker.wins}, Loses: ${scoreTracker.loses}, Ties: ${scoreTracker.ties}`;
+}
+
+function isAutoPlay() {
+  const autoPlayClassList = document.querySelector('.js-auto-play-button').classList
+  if (autoPlayClassList.contains(isToggled))
+    return true;
+  else if (!autoPlayClassList.contains(isToggled)) return false;
+}
+
+function autoPlayToggle() {
+  const displayElement = document.querySelector('.js-message-display');
+  const autoPlayButton = document.querySelector('.js-auto-play-button')
+
+  if (!autoPlayButton.classList.contains(isToggled)) {
+    autoPlayButton.classList.add(isToggled)
+    displayElement.innerHTML = 'Select a move...'
+  }
+  else if (autoPlayButton.classList.contains(isToggled)) {
+    autoPlayButton.classList.remove(isToggled);
+    autoPlayButton.innerHTML = "Auto Play"
+    intervalId && clearInterval(intervalId);
+    displayElement.innerHTML = ''
+  }
+}
+
+function autoPlay() {
+  const displayElement = document.querySelector('.js-message-display');
+  const autoPlayButton = document.querySelector('.js-auto-play-button');
+
+  displayElement.innerHTML = '';
+  autoPlayButton.innerHTML = 'Pause'
+
+  intervalId = setInterval(function () {
+    playGame()
+  }, 1000)
 }

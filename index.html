@@ -13,12 +13,11 @@
           class="move-button"
           onclick="
       userMove = 'Rock';
-      computerMove = calculateComputerMove();
-      result = compareMoves();
-      trackScore(result);
-      displayMoves();
-      displayResult();
-      displayScore();
+      if (isAutoPlay()) {
+        playGame();
+        autoPlay()
+      }
+      else playGame();
       "
         >
           <img
@@ -31,12 +30,11 @@
           class="move-button"
           onclick="
       userMove = 'Paper';
-      computerMove = calculateComputerMove();
-      result = compareMoves();
-      trackScore(result);
-      displayMoves();
-      displayResult();
-      displayScore();
+      if (isAutoPlay()){
+        playGame();
+        autoPlay();
+      }
+      else playGame();
       "
         >
           <img
@@ -49,12 +47,11 @@
           class="move-button"
           onclick="
       userMove = 'Scissors';
-      computerMove = calculateComputerMove();
-      result = compareMoves();
-      trackScore(result);
-      displayMoves();
-      displayResult();
-      displayScore();
+      if (isAutoPlay()){
+        playGame();
+        autoPlay();
+      }
+      else playGame();
     "
         >
           <img
@@ -69,17 +66,26 @@
       <p class="js-result result"></p>
       <p class="js-score-tracker score"></p>
 
-      <button
-        class="reset-button"
-        onclick="
+      <div>
+        <button
+          class="reset-button"
+          onclick="
       resetScore();
       displayMoves();
       displayResult();
       displayScore();
       "
-      >
-        Reset
-      </button>
+        >
+          Reset
+        </button>
+        <button
+          class="auto-play-button js-auto-play-button"
+          onclick="autoPlayToggle();"
+        >
+          Auto Play
+        </button>
+      </div>
+      <p class="js-message-display"></p>
     </main>
 
     <script src="main.js"></script>

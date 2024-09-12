@@ -46,10 +46,16 @@ body{
   margin-top: 40px;
 }
 
-.reset-button{
+.reset-button,
+.auto-play-button{
   background-color: white;
   border: none;
   font-size: 15px;
   padding: 8px 15px;
   cursor: pointer;
+}
+
+.is-toggled{
+  color: white;
+  background-color: rgb(93, 93, 93);
 }
