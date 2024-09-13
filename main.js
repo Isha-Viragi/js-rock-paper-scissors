@@ -47,6 +47,17 @@ document.body.addEventListener('keydown', (event) => {
     initializeGame();
     highlightMove('s')
   }
+  else if (event.key === 'a') {
+    autoPlayToggle();
+    highlightMove('a')
+  }
+  else if (event.key === 'Backspace') {
+    resetScore();
+    displayMoves();
+    displayResult();
+    displayScore();
+    highlightMove('backspace')
+  }
 })
 
 rockButton.addEventListener('click', () => {
@@ -70,6 +81,7 @@ resetButton.addEventListener('click', () => {
   displayResult();
   displayScore();
 });
+
 
 autoPlayButton.addEventListener('click', () => {
   autoPlayToggle();
@@ -140,7 +152,7 @@ function displayMoves() {
     document.querySelector(
       ".js-moves"
     ).innerHTML = `You <img src="images/${userMove.toLowerCase()}-emoji.png" class="move-icon"> 
-          <img src="images/${computerMove.toLowerCase()}-emoji.png" class="move-icon"> Computer`;
+          <img src="images/${computerMove.toLowerCase()}-emoji.png" class="move-icon"> Bot`;
   } else document.querySelector(".js-moves").innerHTML = "";
 }
 

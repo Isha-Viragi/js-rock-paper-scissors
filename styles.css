@@ -1,5 +1,6 @@
 *{
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
 }
 
 body{
@@ -14,12 +15,16 @@ body{
   align-items: center;
 }
 
-.buttons-container{
+.move-buttons-container,
+.control-buttons-container{
   display: flex;
   flex-direction: row;
+  margin-bottom: 26px;
 }
 
-.button-container{
+
+.move-button-container,
+.control-button-container{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,11 +34,12 @@ body{
 .title{
   font-size: 30px;
   font-weight: bold;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .move-icon{
-  height: 70px;
+  height: 60px;
 }
 
 .move-button{
@@ -45,37 +51,38 @@ body{
   cursor: pointer;
 }
 
-.moves{
-  margin-top: 20px;
-}
 .result{
   font-size: 25px;
   font-weight: bold;
-  margin-top: 15px;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .score{
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 16px;
 }
 
 .reset-button,
 .auto-play-button{
   background-color: white;
   border: none;
-  font-size: 15px;
-  padding: 8px 15px;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 8px 24px;
   cursor: pointer;
 }
 
 .is-toggled{
   color: white;
-  background-color: rgb(93, 93, 93);
+  background-color: rgb(60, 60, 60);
 }
 
 .shortcut-display{
   color: rgb(72, 72, 72);
   font-weight: bold;
   font-size: 18px;
+  margin-top: 10px;
 }
 .is-keydown {
   color: white;
