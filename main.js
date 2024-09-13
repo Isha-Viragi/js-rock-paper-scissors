@@ -11,10 +11,69 @@ const winMessage = "You win  :)";
 const loseMessage = "You lose  :(";
 const tieMessage = "It's a tie  :/";
 const isToggled = 'is-toggled';
+const isKeydown = 'is-keydown'
 const userMoveAutoPlay = '';
 let intervalId;
 
 displayScore();
+
+const rockButton = document.querySelector('.js-rock-button');
+const paperButton = document.querySelector('.js-paper-button');
+const scissorsButton = document.querySelector('.js-scissors-button');
+const resetButton = document.querySelector('.js-reset-button');
+const autoPlayButton = document.querySelector('.js-auto-play-button');
+
+
+
+function highlightMove(move) {
+  const displayElement = document.querySelector(`.js-${move}-display`);
+  displayElement.classList.add(isKeydown)
+  setTimeout(() => displayElement.classList.remove(isKeydown), 180)
+}
+
+document.body.addEventListener('keydown', (event) => {
+  if (event.key === 'r') {
+    userMove = 'Rock';
+    initializeGame();
+    highlightMove('r')
+  }
+  else if (event.key === 'p') {
+    userMove = 'Paper';
+    initializeGame();
+    highlightMove('p')
+  }
+  else if (event.key === 's') {
+    userMove = 'Scissors';
+    initializeGame();
+    highlightMove('s')
+  }
+})
+
+rockButton.addEventListener('click', () => {
+  userMove = 'Rock';
+  initializeGame();
+});
+
+paperButton.addEventListener('click', () => {
+  userMove = 'Paper'
+  initializeGame();
+});
+
+scissorsButton.addEventListener('click', () => {
+  userMove = 'Scissors'
+  initializeGame();
+});
+
+resetButton.addEventListener('click', () => {
+  resetScore();
+  displayMoves();
+  displayResult();
+  displayScore();
+});
+
+autoPlayButton.addEventListener('click', () => {
+  autoPlayToggle();
+})
 
 function calculateComputerMove() {
   let computerMove = "";
@@ -97,23 +156,31 @@ function displayScore() {
   ).innerHTML = `Wins: ${scoreTracker.wins}, Loses: ${scoreTracker.loses}, Ties: ${scoreTracker.ties}`;
 }
 
+function initializeGame() {
+  if (isAutoPlay()) {
+    playGame();
+    autoPlay()
+  }
+  else playGame();
+}
+
 function isAutoPlay() {
-  const autoPlayClassList = document.querySelector('.js-auto-play-button').classList
+  const autoPlayClassList = autoPlayButton.classList;
   if (autoPlayClassList.contains(isToggled))
     return true;
   else if (!autoPlayClassList.contains(isToggled)) return false;
 }
 
 function autoPlayToggle() {
+  const autoPlayClassList = autoPlayButton.classList;
   const displayElement = document.querySelector('.js-message-display');
-  const autoPlayButton = document.querySelector('.js-auto-play-button')
 
-  if (!autoPlayButton.classList.contains(isToggled)) {
-    autoPlayButton.classList.add(isToggled)
+  if (!autoPlayClassList.contains(isToggled)) {
+    autoPlayClassList.add(isToggled)
     displayElement.innerHTML = 'Select a move...'
   }
-  else if (autoPlayButton.classList.contains(isToggled)) {
-    autoPlayButton.classList.remove(isToggled);
+  else if (autoPlayClassList.contains(isToggled)) {
+    autoPlayClassList.remove(isToggled);
     autoPlayButton.innerHTML = "Auto Play"
     intervalId && clearInterval(intervalId);
     displayElement.innerHTML = ''
@@ -122,7 +189,6 @@ function autoPlayToggle() {
 
 function autoPlay() {
   const displayElement = document.querySelector('.js-message-display');
-  const autoPlayButton = document.querySelector('.js-auto-play-button');
 
   displayElement.innerHTML = '';
   autoPlayButton.innerHTML = 'Pause'
@@ -131,3 +197,4 @@ function autoPlay() {
     playGame()
   }, 1000)
 }
+

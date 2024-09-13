@@ -8,58 +8,37 @@
   <body>
     <main class="main-container">
       <p class="title">Rock Paper Scissors</p>
-      <section>
-        <button
-          class="move-button"
-          onclick="
-      userMove = 'Rock';
-      if (isAutoPlay()) {
-        playGame();
-        autoPlay()
-      }
-      else playGame();
-      "
-        >
-          <img
-            src="images/rock-emoji.png"
-            alt="Rock hand emoji"
-            class="move-icon"
-          />
-        </button>
-        <button
-          class="move-button"
-          onclick="
-      userMove = 'Paper';
-      if (isAutoPlay()){
-        playGame();
-        autoPlay();
-      }
-      else playGame();
-      "
-        >
-          <img
-            src="images/paper-emoji.png"
-            alt="Hand paper emoji"
-            class="move-icon"
-          />
-        </button>
-        <button
-          class="move-button"
-          onclick="
-      userMove = 'Scissors';
-      if (isAutoPlay()){
-        playGame();
-        autoPlay();
-      }
-      else playGame();
-    "
-        >
-          <img
-            src="images/scissors-emoji.png"
-            alt="Scissors hand emoji"
-            class="move-icon"
-          />
-        </button>
+      <section class="buttons-container">
+        <div class="button-container">
+          <button class="move-button js-rock-button">
+            <img
+              src="images/rock-emoji.png"
+              alt="Rock hand emoji"
+              class="move-icon"
+            />
+          </button>
+          <p class="js-r-display shortcut-display">r</p>
+        </div>
+        <div class="button-container">
+          <button class="move-button js-paper-button">
+            <img
+              src="images/paper-emoji.png"
+              alt="Hand paper emoji"
+              class="move-icon"
+            />
+          </button>
+          <p class="js-p-display shortcut-display">p</p>
+        </div>
+        <div class="button-container">
+          <button class="move-button js-scissors-button">
+            <img
+              src="images/scissors-emoji.png"
+              alt="Scissors hand emoji"
+              class="move-icon"
+            />
+          </button>
+          <p class="js-s-display shortcut-display">s</p>
+        </div>
       </section>
 
       <p class="js-moves moves"></p>
@@ -67,23 +46,8 @@
       <p class="js-score-tracker score"></p>
 
       <div>
-        <button
-          class="reset-button"
-          onclick="
-      resetScore();
-      displayMoves();
-      displayResult();
-      displayScore();
-      "
-        >
-          Reset
-        </button>
-        <button
-          class="auto-play-button js-auto-play-button"
-          onclick="autoPlayToggle();"
-        >
-          Auto Play
-        </button>
+        <button class="reset-button js-reset-button">Reset</button>
+        <button class="auto-play-button js-auto-play-button">Auto Play</button>
       </div>
       <p class="js-message-display"></p>
     </main>
