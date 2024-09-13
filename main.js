@@ -25,36 +25,50 @@ const autoPlayButton = document.querySelector('.js-auto-play-button');
 
 
 
-function highlightMove(move) {
-  const displayElement = document.querySelector(`.js-${move}-display`);
+function highlightKey(key) {
+  const displayElement = document.querySelector(`.js-${key}-display`);
   displayElement.classList.add(isKeydown)
-  setTimeout(() => displayElement.classList.remove(isKeydown), 180)
+  setTimeout(() => {
+    displayElement.classList.remove(isKeydown);
+  }, 180)
+}
+
+function highlightMove(button) {
+  button.classList.add('move-button-active')
+  setTimeout(() => {
+    button.classList.remove('move-button-active')
+  }, 180)
+
 }
 
 document.body.addEventListener('keydown', (event) => {
   if (event.key === 'r') {
     userMove = 'Rock';
     initializeGame();
-    highlightMove('r')
+    highlightMove(rockButton);
+    highlightKey('r');
   }
   else if (event.key === 'p') {
     userMove = 'Paper';
     initializeGame();
-    highlightMove('p')
+    highlightMove(paperButton);
+    highlightKey('p');
   }
   else if (event.key === 's') {
     userMove = 'Scissors';
     initializeGame();
-    highlightMove('s')
+    highlightMove(scissorsButton);
+    highlightKey('s');
   }
   else if (event.key === 'a') {
     autoPlayToggle();
-    highlightMove('a')
+    highlightKey('a')
   }
   else if (event.key === 'Backspace') {
-    highlightMove('backspace');
+    highlightKey('backspace');
     const messageDisplay = document.querySelector('.js-message-display')
     messageDisplay.innerHTML = `Are you sure you want to reset? <button class="js-reset-yes">Yes</button> <button class="js-reset-no">No</button>`
+    resetButton.classList.add(isToggled);
     document.querySelector('.js-reset-yes')
       .addEventListener('click', () => {
         resetScore();
@@ -62,11 +76,13 @@ document.body.addEventListener('keydown', (event) => {
         displayResult();
         displayScore();
         messageDisplay.innerHTML = '';
+        resetButton.classList.remove(isToggled);
       })
 
     document.querySelector('.js-reset-no')
       .addEventListener('click', () => {
         messageDisplay.innerHTML = ''
+        resetButton.classList.remove(isToggled);
       })
 
     document.body.addEventListener('keydown', (event) => {
@@ -76,9 +92,11 @@ document.body.addEventListener('keydown', (event) => {
         displayResult();
         displayScore();
         messageDisplay.innerHTML = '';
+        resetButton.classList.remove(isToggled);
       }
       else if (event.key === 'n') {
         messageDisplay.innerHTML = ''
+        resetButton.classList.remove(isToggled);
       }
     })
   }
@@ -102,6 +120,7 @@ scissorsButton.addEventListener('click', () => {
 resetButton.addEventListener('click', () => {
   const messageDisplay = document.querySelector('.js-message-display')
   messageDisplay.innerHTML = `Are you sure you want to reset? <button class="js-reset-yes">Yes</button> <button class="js-reset-no">No</button>`
+  resetButton.classList.add(isToggled);
   document.querySelector('.js-reset-yes')
     .addEventListener('click', () => {
       resetScore();
@@ -109,11 +128,13 @@ resetButton.addEventListener('click', () => {
       displayResult();
       displayScore();
       messageDisplay.innerHTML = '';
+      resetButton.classList.remove(isToggled);
     })
 
   document.querySelector('.js-reset-no')
     .addEventListener('click', () => {
       messageDisplay.innerHTML = ''
+      resetButton.classList.remove(isToggled);
     })
 });
 
