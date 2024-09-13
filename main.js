@@ -52,11 +52,35 @@ document.body.addEventListener('keydown', (event) => {
     highlightMove('a')
   }
   else if (event.key === 'Backspace') {
-    resetScore();
-    displayMoves();
-    displayResult();
-    displayScore();
-    highlightMove('backspace')
+    highlightMove('backspace');
+    const messageDisplay = document.querySelector('.js-message-display')
+    messageDisplay.innerHTML = `Are you sure you want to reset? <button class="js-reset-yes">Yes</button> <button class="js-reset-no">No</button>`
+    document.querySelector('.js-reset-yes')
+      .addEventListener('click', () => {
+        resetScore();
+        displayMoves();
+        displayResult();
+        displayScore();
+        messageDisplay.innerHTML = '';
+      })
+
+    document.querySelector('.js-reset-no')
+      .addEventListener('click', () => {
+        messageDisplay.innerHTML = ''
+      })
+
+    document.body.addEventListener('keydown', (event) => {
+      if (event.key === 'y') {
+        resetScore();
+        displayMoves();
+        displayResult();
+        displayScore();
+        messageDisplay.innerHTML = '';
+      }
+      else if (event.key === 'n') {
+        messageDisplay.innerHTML = ''
+      }
+    })
   }
 })
 
@@ -76,10 +100,21 @@ scissorsButton.addEventListener('click', () => {
 });
 
 resetButton.addEventListener('click', () => {
-  resetScore();
-  displayMoves();
-  displayResult();
-  displayScore();
+  const messageDisplay = document.querySelector('.js-message-display')
+  messageDisplay.innerHTML = `Are you sure you want to reset? <button class="js-reset-yes">Yes</button> <button class="js-reset-no">No</button>`
+  document.querySelector('.js-reset-yes')
+    .addEventListener('click', () => {
+      resetScore();
+      displayMoves();
+      displayResult();
+      displayScore();
+      messageDisplay.innerHTML = '';
+    })
+
+  document.querySelector('.js-reset-no')
+    .addEventListener('click', () => {
+      messageDisplay.innerHTML = ''
+    })
 });
 
 
