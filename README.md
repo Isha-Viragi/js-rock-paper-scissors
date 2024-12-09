@@ -15,21 +15,21 @@ Here's how you can play the game:
   - Pressing the keyboard keys 'r' (rock), 'p' (paper), or 's' (scissors)
 
 - **See the Outcome**:  
-  The computer will randomly generate a move and compare it with yours, letting you know if you won, lost, or tied
+  The computer will randomly generate a move and compare it with yours, letting you know if you won, lost, or tied!
 
 - **Track Your Score**:
 
-  - Your score is updated in real-time
+  - Watch your updated score in real-time!
   - It is also stored in your browser, so it persists even if you leave the page and return later
 
 - **Auto-Play Feature**:
 
-  1. Enable auto-play by clicking the auto-play button or pressing 'a'
-  2. Choose the move you want the computer to repeatedly play against (rock, paper, or scissors)
-  3. Watch as the computer plays against your selected move at 1-second intervals
+  - Enable auto-play by clicking the "auto-play" button or pressing 'a'
+  - Choose the move you want the computer to repeatedly play against (rock, paper, or scissors)
+  - Watch as the computer plays against your selected move at 1-second intervals
 
 - **Reset Your Score**:  
-  Reset the game score by clicking the "Reset" button or pressing the 'Backspace' key
+  Reset the game score by clicking the "reset" button or pressing the 'Backspace' key
 
 ## Core Concepts Covered
 
@@ -71,6 +71,6 @@ Here's how you can play the game:
 - [ ] Implement unit tests for better reliability
 - [ ] Implementing multiplayer mode for users to play against each other
 
-## Thank-Yous
+## And Finally, The Thank-Yous
 
 Thank you for checking out my repo! If you have any feedback, feel free to reach out via [LinkedIn](https://www.linkedin.com/in/ishaviragi/), or email me at isha.viragi@gmail.com
